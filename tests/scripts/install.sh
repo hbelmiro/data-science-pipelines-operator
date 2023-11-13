@@ -57,10 +57,10 @@ fi
 if ! [ -z "${SKIP_DATASCIENCECLUSTER_INSTALL}" ]; then
   ## SKIP_DATASCIENCECLUSTER_INSTALL is useful in an instance where the
   ## operator install comes with an init container to handle
-  ## the KfDef creation
-  echo "Relying on existing KfDef because SKIP_KFDEF_INSTALL was set"
+  ## the DataScienceCluster creation
+  echo "Relying on existing DataScienceCluster because SKIP_DATASCIENCECLUSTER_INSTALL was set"
 else
-  echo "Creating the following KfDef"
+  echo "Creating the following DataScienceCluster"
   cat ./datasciencecluster_openshift.yaml > ${ARTIFACT_DIR}/datasciencecluster_openshift.yaml
   oc apply -f ./datasciencecluster_openshift.yaml
   datasciencecluster_result=$?
