@@ -69,25 +69,20 @@ DSPO_NS=data-science-pipelines-operator
 oc new-project ${DSPO_NS}
 ```
 
-Then deploy the following `KfDef` into the namespace created above:
+Then deploy the following `DataScienceCluster` into the namespace created above:
 
 ```bash
 cat <<EOF | oc apply -f -
-apiVersion: kfdef.apps.kubeflow.org/v1
-kind: KfDef
+kind: DataScienceCluster
+apiVersion: datasciencecluster.opendatahub.io/v1
 metadata:
-   name: data-science-pipelines-operator
-   namespace: ${DSPO_NS}
+  name: data-science-pipelines-operator
 spec:
-   applications:
-      - kustomizeConfig:
-           repoRef:
-              name: manifests
-              path: data-science-pipelines-operator/
-        name: data-science-pipelines-operator
-   repos:
-      - name: manifests
-        uri: "https://github.com/opendatahub-io/odh-manifests/tarball/master"
+  components:
+    dashboard:
+      managementState: Managed
+    datasciencepipelines:
+      managementState: Managed
 EOF
 ```
 
@@ -436,8 +431,8 @@ Depending on how you installed DSPO, follow the instructions below accordingly t
 To uninstall DSPO via ODH run the following:
 
 ```bash
-KFDEF_NAME=data-science-pipelines-operator
-oc delete kfdef ${KFDEF_NAME} -n ${DSPO_NS}
+DSC_NAME=data-science-pipelines-operator
+oc delete datasciencecluster ${DSC_NAME} -n ${DSPO_NS}
 ```
 
 ## Cleanup Standalone Installation

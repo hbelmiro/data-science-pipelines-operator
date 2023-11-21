@@ -90,7 +90,7 @@ jobs:
 
       - name: Prepare for Upgrade Testing
         run: |
-          # Update the KfDef manifest with the latest released version
+          # Update the DataScienceCluster manifest with the latest released version
           sed -i "s/main/${{ inputs.released-version }}/" ${{ env.RESOURCES_DIR }}/kfdef/kfdef.yaml
         working-directory: ${{ env.RESOURCES_DIR }}/kfdef
 
