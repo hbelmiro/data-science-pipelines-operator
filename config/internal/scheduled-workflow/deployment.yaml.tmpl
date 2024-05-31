@@ -33,6 +33,8 @@ spec:
           image: "{{.ScheduledWorkflow.Image}}"
           imagePullPolicy: IfNotPresent
           name: ds-pipeline-scheduledworkflow
+          ports:
+            - containerPort: 6060
           command:
             - controller
             - "--logtostderr=true"
