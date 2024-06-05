@@ -43,6 +43,8 @@ spec:
           image: "{{.PersistenceAgent.Image}}"
           imagePullPolicy: IfNotPresent
           name: ds-pipeline-persistenceagent
+          ports:
+            - containerPort: 6062
           command:
             - persistence_agent
             - "--logtostderr=true"
