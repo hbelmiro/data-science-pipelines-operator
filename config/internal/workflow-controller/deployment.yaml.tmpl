@@ -53,6 +53,7 @@ spec:
           timeoutSeconds: 30
         name: ds-pipeline-workflow-controller
         ports:
+        - containerPort: 6062
         - containerPort: 9090
           name: metrics
         - containerPort: 6060
