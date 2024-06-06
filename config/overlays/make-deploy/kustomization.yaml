@@ -9,4 +9,4 @@ patchesStrategicMerge:
 images:
 - name: controller
   newName: quay.io/hbelmiro/dspo
-  newTag: dev-leak-swf-1717694383
+  newTag: dev-leak-swf-1717697532
